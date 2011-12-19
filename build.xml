@@ -70,9 +70,9 @@
         </copy>
     </target>
 
-<!-- ============================================================== -->
-<!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
-<!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
+    <!-- ============================================================== -->
 
     <path id="catalina-ant-classpath">
         <!-- We need the Catalina jars for Tomcat -->
@@ -82,7 +82,7 @@
         </fileset>
     </path>
 
-    <taskdef name="install" classname="org.apache.catalina.ant.InstallTask">
+    <taskdef name="install" classname="org.apache.catalina.ant.DeployTask">
         <classpath refid="catalina-ant-classpath"/>
     </taskdef>
     <taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask">
@@ -108,31 +108,31 @@
 
     <target name="reload" description="Reload application in Tomcat">
         <reload url="${tomcat.manager.url}"
-                 username="${tomcat.manager.username}"
-                 password="${tomcat.manager.password}"
-                 path="/${name}"/>
+                username="${tomcat.manager.username}"
+                password="${tomcat.manager.password}"
+                path="/${name}"/>
     </target>
 
     <target name="start" description="Start Tomcat application">
         <start url="${tomcat.manager.url}"
-                 username="${tomcat.manager.username}"
-                 password="${tomcat.manager.password}"
-                 path="/${name}"/>
+               username="${tomcat.manager.username}"
+               password="${tomcat.manager.password}"
+               path="/${name}"/>
     </target>
 
     <target name="stop" description="Stop Tomcat application">
         <stop url="${tomcat.manager.url}"
-                 username="${tomcat.manager.username}"
-                 password="${tomcat.manager.password}"
-                 path="/${name}"/>
+              username="${tomcat.manager.username}"
+              password="${tomcat.manager.password}"
+              path="/${name}"/>
     </target>
 
     <target name="list" description="List Tomcat applications">
         <list url="${tomcat.manager.url}"
-                 username="${tomcat.manager.username}"
-                 password="${tomcat.manager.password}"/>
+              username="${tomcat.manager.username}"
+              password="${tomcat.manager.password}"/>
     </target>
 
-<!-- End Tomcat tasks -->
+    <!-- End Tomcat tasks -->
 
 </project>
